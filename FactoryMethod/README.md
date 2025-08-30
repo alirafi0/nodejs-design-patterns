@@ -1,1 +1,1 @@
-# nodejs-design-patterns
+# factory method design pattern
