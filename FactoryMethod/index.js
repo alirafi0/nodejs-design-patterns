@@ -1,5 +1,5 @@
-import CarFactory from "./concreteCreator/CarFactory.js";
-import BikeFactory from "./concreteCreator/BikeFactory.js";
+import CarFactory from "./concreteCreator/carFactory.js";
+import BikeFactory from "./concreteCreator/bikeFactory.js";
 
 const car = new CarFactory();
 car.handle();
