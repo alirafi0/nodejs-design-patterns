@@ -1,4 +1,4 @@
-// Base Creator
+// vehicle factory interface
 export default class VehicleFactory {
 	makeVehicle() {
 		throw new Error("move makeVehicle must be implement...")
