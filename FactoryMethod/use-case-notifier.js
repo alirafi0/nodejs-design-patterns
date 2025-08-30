@@ -1,63 +1,53 @@
+// product interface
 class Notifier {
-	send() {
-		throw new ("send method must be implement...")
-	}
+  send() {
+    throw new "send method must be implement..."();
+  }
 }
 
 class SmsNotifier extends Notifier {
-	send() {
-		console.log("sending sms...");
-		setTimeout(() => {
-			console.log("sms sucessfully sended.");
-		}, 2000)
-	}
+  send() {
+    console.log("sending sms...");
+    setTimeout(() => {
+      console.log("sms sucessfully sended.");
+    }, 2000);
+  }
 }
 
 class EmailNotifier extends Notifier {
-	send() {
-		console.log("email sms...");
-		setTimeout(() => {
-			console.log("email sucessfully sended.");
-		}, 200)
-	}
+  send() {
+    console.log("email sms...");
+    setTimeout(() => {
+      console.log("email sucessfully sended.");
+    }, 200);
+  }
 }
 
-
-
+// factory interface
 class NotifierFactory {
-
-	createNotifier() {
-		throw new ("createNotifier method must be implement...")
-	}
-
+  createNotifier() {
+    throw new "createNotifier method must be implement..."();
+  }
 }
 
 class EmailNotifierFactory extends NotifierFactory {
-
-	createNotifier() {
-		const emailNotifier = new EmailNotifier();
-		return emailNotifier;
-	}
-
+  createNotifier() {
+    const emailNotifier = new EmailNotifier();
+    return emailNotifier;
+  }
 }
 
 class SmsNotifierFactory extends NotifierFactory {
-
-	createNotifier() {
-		const smsNotifier = new SmsNotifier();
-		return smsNotifier;
-	}
-
+  createNotifier() {
+    const smsNotifier = new SmsNotifier();
+    return smsNotifier;
+  }
 }
 
-function getNotifierFactory(type) {
-	switch (type) {
-		case 'sms': return new SmsNotifierFactory();
-		case 'email': return new EmailNotifierFactory();
-	}
+// client code
+function clientCode(notifierCreator) {
+  const notifier = notifierCreator.createNotifier();
+  notifier.send();
 }
 
-
-const notifierFactory = getNotifierFactory('sms');
-const notifier = notifierFactory.createNotifier();
-notifier.send();
+clientCode(new SmsNotifierFactory());
